@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .home-container
+    h1.hero-title Discover and Own Games with NFTs
+    p.hero-subtitle Buy once, own forever. Powered by blockchain.
+
+    .hero-actions
+      a.btn-primary(href="/auth/login") Get Started
+      a.btn-secondary(href="/games") Browse Games
+
+    .featured
+      h2 Featured Games
+      .game-list
+        each game in games
+          .game-card
+            img(src=game.image, alt=game.title)
+            h3= game.title
+            p= game.description
+            a.btn-buy(href=`/games/${game._id}`) View Details

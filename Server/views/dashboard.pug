@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  .dashboard-container
+    h1 Welcome #{user.username}
+    p You are logged in with #{user.email}
+    a.btn-logout(href="/user/logout") Logout

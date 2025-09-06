@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const { homePage } = require("../controllers/homeController");
 
-router.get("/", (req, res) => {
-  res.render("index", { title: "OnStore - Home" });
-});
+router.get("/", homePage);
 
 module.exports = router;

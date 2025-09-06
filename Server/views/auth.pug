@@ -1,16 +1,18 @@
 extends layout
 
 block content
-  section.form-section
-    h2 #{mode === "login" ? "Login" : "Register"}
-    form(method="POST" action= mode === "login" ? "/auth/login" : "/auth/register")
-      input(type="text" name="username" placeholder="Username" required)
-      input(type="password" name="password" placeholder="Password" required)
-      button.btn(type="submit") #{mode === "login" ? "Login" : "Register"}
+  .auth-container
+    h1.auth-title Welcome to OnStore
+    p.auth-subtitle Please login or create an account
 
-    if mode === "login"
-      p Don’t have an account?
-        a(href="/auth/register") Register here
-    else
-      p Already have an account?
-        a(href="/auth/login") Login here
+    if activeTab === "login"
+      form#login-form.auth-form(action="/auth/login", method="POST")
+        input(type="email", name="email", placeholder="Email", required)
+        input(type="password", name="password", placeholder="Password", required)
+        button(type="submit") Login
+    else if activeTab === "register"
+      form#register-form.auth-form(action="/auth/register", method="POST")
+        input(type="text", name="username", placeholder="Username", required)
+        input(type="email", name="email", placeholder="Email", required)
+        input(type="password", name="password", placeholder="Password", required)
+        button(type="submit") Register

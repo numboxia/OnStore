@@ -6,7 +6,7 @@ const ethers = require('ethers');
 
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
-const indexRoutes = require("./routes/index");
+const homeRoutes = require("./routes/home");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 
@@ -31,7 +31,7 @@ app.use(session({
   cookie: { maxAge: 1000 * 60 * 60 * 2 }
 }));
 
-app.use("/", indexRoutes);
+app.use("/", homeRoutes);
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
 

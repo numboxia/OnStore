@@ -11,8 +11,9 @@ html(lang="en")
         a.logo(href="/") OnStore
         ul.nav-links
           li: a(href="/") Home
-          li: a(href="/auth/login") Login
-          li: a(href="/auth/register") Register
+          if !user
+            li: a(href="/auth/login") Login
+            li: a(href="/auth/register") Register
           if user
             li: a(href="/user/dashboard") Dashboard
             li: a(href="/user/logout") Logout
@@ -22,5 +23,4 @@ html(lang="en")
 
     footer
       p © #{new Date().getFullYear()} OnStore
-
     script(src="/js/animations.js")

@@ -1,22 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const {
+  loginPage,
+  registerPage,
+  loginUser,
+  registerUser
+} = require("../controllers/authController");
 
-router.get("/login", (req, res) => {
-  res.render("auth", { title: "Login", mode: "login" });
-});
-
-router.get("/register", (req, res) => {
-  res.render("auth", { title: "Register", mode: "register" });
-});
-
-router.post("/login", (req, res) => {
-  const { username, password } = req.body;
-  res.send(`Login attempt for ${username}`);
-});
-
-router.post("/register", (req, res) => {
-  const { username, password } = req.body;
-  res.send(`Register attempt for ${username}`);
-});
+router.get("/login", loginPage);
+router.get("/register", registerPage);
+router.post("/login", loginUser);
+router.post("/register", registerUser);
 
 module.exports = router;
