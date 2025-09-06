@@ -9,6 +9,7 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const homeRoutes = require("./routes/home");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
+const purchaseRoutes = require("./routes/purchase");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -34,6 +35,7 @@ app.use(session({
 app.use("/", homeRoutes);
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
+app.use("/purchase", purchaseRoutes);
 
 app.use((req, res) => {
   res.status(404).render("404", { title: "Page Not Found" });
