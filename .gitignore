@@ -1,0 +1,13 @@
+.env
+
+#Server
+Server/node_modules
+
+#SmartContract
+SmartContract/node_modules
+SmartContract/dist
+SmartContract/bundle
+SmartContract/artifacts
+SmartContract/cache
+SmartContract/types
+SmartContract/coverage
