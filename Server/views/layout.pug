@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title #{title} | OnStore
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    header
+      nav.navbar
+        a.logo(href="/") OnStore
+        ul.nav-links
+          li: a(href="/") Home
+          li: a(href="/auth/login") Login
+          li: a(href="/auth/register") Register
+          if user
+            li: a(href="/user/dashboard") Dashboard
+            li: a(href="/user/logout") Logout
+
+    main
+      block content
+
+    footer
+      p © #{new Date().getFullYear()} OnStore
+
+    script(src="/js/animations.js")
