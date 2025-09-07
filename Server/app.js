@@ -38,12 +38,26 @@ app.use("/user", userRoutes);
 app.use("/purchase", purchaseRoutes);
 
 app.use((req, res) => {
-  res.status(404).render("404", { title: "Page Not Found" });
+  // Check if the request is expecting JSON
+  if (req.xhr || req.headers.accept.includes('application/json')) {
+    res.status(404).json({ success: false, error: "Endpoint not found" });
+  } else {
+    res.status(404).render("404", { title: "Page Not Found" });
+  }
 });
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).render("500", { title: "Server Error", error: err });
+  // Check if the request is expecting JSON
+  if (req.xhr || req.headers.accept.includes('application/json')) {
+    res.status(500).json({ 
+      success: false, 
+      error: "Internal server error",
+      details: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    });
+  } else {
+    res.status(500).render("500", { title: "Server Error", error: err });
+  }
 });
 
 app.listen(PORT, () => {
