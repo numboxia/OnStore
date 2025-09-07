@@ -1,7 +1,13 @@
 import type { HardhatUserConfig } from "hardhat/config";
+import * as dotenv from "dotenv";
+import * as path from "path";
+import { fileURLToPath } from "url";
 
 import hardhatToolboxMochaEthersPlugin from "@nomicfoundation/hardhat-toolbox-mocha-ethers";
 import { configVariable } from "hardhat/config";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const config: HardhatUserConfig = {
   plugins: [hardhatToolboxMochaEthersPlugin],

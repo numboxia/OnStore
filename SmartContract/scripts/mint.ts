@@ -6,10 +6,10 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-dotenv.config({ path: path.resolve(__dirname, "../.env") });
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
 async function main() {
-  const contractAddress = "0xYourContractAddressHere";
+  const contractAddress = "0xa12e11A799f5cF96A99D6930acFb6dC06C1B0cAA";
 
   if (!process.env.SEPOLIA_RPC_URL) {
     throw new Error("SEPOLIA_RPC_URL not set in .env file");
@@ -23,7 +23,7 @@ async function main() {
   const recipient = signer.address;
   console.log("Minting to account:", recipient);
 
-  const artifactPath = path.resolve(__dirname, "../artifacts/contracts/GameNFT.sol/GameNFT.json");
+  const artifactPath = path.resolve(__dirname, "../artifacts/contracts/PixelQuest_License.sol/GameNFT.json");
   const artifact = JSON.parse(await fs.readFile(artifactPath, "utf-8"));
 
   const gameNFT = new ethers.Contract(contractAddress, artifact.abi, signer);

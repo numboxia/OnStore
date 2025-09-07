@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-dotenv.config({ path: path.resolve(__dirname, "../.env") });
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
 async function main() {
   const baseURI = process.env.IPFS_URI || "ipfs://QmVUitAJG5QFcfWw1feHRpYWkugQU8zaQdWPm3xGSBBQZd/";
@@ -24,7 +24,7 @@ async function main() {
   const signer = new ethers.Wallet(process.env.SEPOLIA_PRIVATE_KEY, provider);
   console.log("Deploying contract with account:", signer.address);
 
-  const artifactPath = path.resolve(__dirname, "../artifacts/contracts/GameNFT.sol/GameNFT.json");
+  const artifactPath = path.resolve(__dirname, "../artifacts/contracts/PixelQuest_License.sol/GameNFT.json");
   const artifact = JSON.parse(await fs.readFile(artifactPath, "utf-8"));
 
   const GameNFT = new ethers.ContractFactory(artifact.abi, artifact.bytecode, signer);
